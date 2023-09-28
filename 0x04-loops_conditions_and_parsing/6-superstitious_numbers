@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This script is displaying from 1 to 20
+# "4 and then bad luck from the China"
+# "9 and then bad luck from the Japan"
+# "17 and then bad luck from the Italy"
+i=1
+while [ $i -le 20 ]
+do
+    if [ $i -eq 4 ]
+    then
+        echo "$i";echo "bad luck from China"
+    elif [ $i -eq 9 ]
+    then
+        echo "$i";echo "bad luck from Japan"
+    elif [ $i -eq 17 ]
+    then
+        echo "$i";echo "bad luck from Italy"
+    else
+        echo "$i"
+    fi
+    i=$(( i + 1 ))
+done

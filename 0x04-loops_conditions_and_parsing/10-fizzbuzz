@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script is displaying "Best school" at 10 times
+for (( i=1; i<=100; i++ ))
+do
+    (( r=i%3 ))
+    (( r1=i%5 ))
+    if [ "$r" = 0 ] && [ "$r1" = 0 ]
+    then
+        echo "FizzBuzz"
+    elif [ "$r" = 0 ]
+    then
+        echo "Fizz"
+    elif [ "$r1" = 0 ]
+    then
+        echo "Buzz"
+    else
+        echo "$i"
+    fi
+done
