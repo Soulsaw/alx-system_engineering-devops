@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # This script all running process
-top -c
+top -o -PID
