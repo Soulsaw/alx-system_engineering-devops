@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays the process that contains the bash word
+# Write a Bash script that displays To infinity and beyond indefinitely.
 while true
 do
     echo "To infinity and beyond";
