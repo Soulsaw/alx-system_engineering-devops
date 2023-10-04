@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-SENDERS = ARGV[0].scan(/[A-Z]/).join
-RECEIVERS = ARGV[0].scan(/[A-Z]/).join
-FLAGS = ARGV[0].scan(/[A-Z]/).join
-puts SENDERS+","+RECEIVERS+","+FLAGS
+SENDERS = ARGV[0].scan(/from:(\+?\d+|\w+)/).join
+RECIEVERS = ARGV[0].scan(/to:(\+?\d+|\w+)/).join
+FLAGS = ARGV[0].scan(/flags:(\W?\d:\W?\d:\W?\d:\W?\d:\W?\d)/).join
+puts SENDERS+","+RECIEVERS+","+FLAGS
+
