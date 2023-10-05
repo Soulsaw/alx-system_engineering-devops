@@ -3,6 +3,7 @@
 if [ $# -ne 1 ]
 then
 	echo "Usage: $0 {IP_ADRESS}"
+	exit
 fi
-ping -n 5 "$1"
+ping -c 5 "$1"
 
