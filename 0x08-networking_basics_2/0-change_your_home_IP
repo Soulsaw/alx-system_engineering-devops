@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Write a Bash script that configures an Ubuntu server with the below requirements.
+file="/etc/hosts"
+if [ -e $file ]
+then
+    echo "127.0.0.2    localhost" >> $file
+fi
