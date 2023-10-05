@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # This scripts displays the listining sockets
 netstat -lp
-
