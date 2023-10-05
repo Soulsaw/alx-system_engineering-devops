@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This scripts displays the listining sockets
+if ( $# < 2 )
+then
+	echo "Usage: $0 {IP_ADRESS}"
+else
+	ping -n 5 "$1"
+fi
