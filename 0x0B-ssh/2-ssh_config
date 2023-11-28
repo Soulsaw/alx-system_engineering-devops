@@ -1,0 +1,5 @@
+Host alx-se
+	HostName 34.229.49.147
+	User ubuntu
+	IdentityFile ~/.ssh/school
+	KbdInteractiveAuthentication no
