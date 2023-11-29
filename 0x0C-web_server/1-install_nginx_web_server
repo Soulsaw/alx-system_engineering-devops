@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Installing nginx server
+apt_install="sudo apt-get update && sudo apt-get install nginx"
+eval "$apt_install"
+eval "sudo ufw allow 'Nginx HTTP'"
