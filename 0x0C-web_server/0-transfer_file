@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script transfert file to the server
+len="$#"
+if [ "$len" -le 3 ]
+then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+path_file="$1"
+server_ip="$2"
+username="$3"
+ssh_key_path="$4"
+
+scp_cmd="scp -o StrictHostKeyChecking=no -i $ssh_key_path $path_file $username@$server_ip:~/"
+
+eval "$scp_cmd"
