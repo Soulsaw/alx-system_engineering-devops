@@ -6,11 +6,11 @@ provider => 'apt',
 }
 
 file {'/etc/nginx/sites-available/default':
-    ensure  => file,
+    ensure  => present,
     mode    => '0644',
     content => "server {
-            listen 80 default server;
-            listen [::]:80;
+            listen 80 default_server;
+            listen [::]:80 default_server;
 
             location / {
                 return 200 'Hello word!';
@@ -18,18 +18,8 @@ file {'/etc/nginx/sites-available/default':
             location /redirect_me {
                 return 301 /redirect_me;
             }
-    }",
+}",
     notify  => Service['nginx'],
-}
-
-file {'/etc/nginx/sites-available/default':
-    ensure => link,
-    target => '/etc/nginx/sites-available/default',
-    notify => Service['nginx'],
-}
-
-file {'/etc/nginx/sites-available/default':
-    ensure => absent,
 }
 
 service {'nginx':
