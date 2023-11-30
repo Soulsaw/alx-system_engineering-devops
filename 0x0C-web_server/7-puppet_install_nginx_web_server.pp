@@ -13,7 +13,7 @@ file {'/etc/nginx/sites-available/default':
             listen [::]:80;
 
             location / {
-                return 200 "Hello word!";
+                return 200 'Hello word!';
             }
             location /redirect_me {
                 return 301 /redirect_me;
