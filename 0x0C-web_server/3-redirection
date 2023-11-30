@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # redirect some file
 rd_cmd="location {\n\treturn 301 /redirect_me;\n}"
-file="/etc/nginx/conf.d/default.conf"
+file="/etc/nginx/sites-available/default"
 sed -i "s/#/$rd_cmd/" "$file"

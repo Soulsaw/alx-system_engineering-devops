@@ -4,5 +4,5 @@ rd_cmd="error_page  404              /404.html;
    location = /404.html {
         root /usr/share/nginx/html;
    }"
-file="/etc/nginx/conf.d/default.conf"
+file="/etc/nginx/sites-available/default"
 sed -i "s/'error_page  404              /404.html;'/$rd_cmd/" "$file"
