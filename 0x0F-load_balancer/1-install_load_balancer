@@ -33,7 +33,7 @@ backend servers
     timeout connect 3000
     timeout server 30000
     balance roundrobin
-    server 392400-web-01 34.229.49.147:80 check
-    server 392400-web-02 34.229.137.4:80 check
+    server 392400-web-01 52.91.148.142:80 check
+    server 392400-web-02 54.87.240.58:80 check
 " >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
