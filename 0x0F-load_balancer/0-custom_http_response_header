@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # web-02 to be identical to web-01
-sudo apt-get update
-sudo apt-get install nginx -y
 
 hostname=$(hostname)
 
@@ -17,8 +15,5 @@ printf %s "server{
     }
 }
 " >> /etc/nginx/sites-available/default
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-
-sudo rm /etc/nginx/sites-enabled/default
 
 sudo systemctl reload nginx
