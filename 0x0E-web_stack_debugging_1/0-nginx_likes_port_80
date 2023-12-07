@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 # Open the nginx port 80
-sudo service nginx start
+sudo apt-get update
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-enabled/default
+sudo systemctl restart nginx
