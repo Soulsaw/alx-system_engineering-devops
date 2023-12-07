@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Open the nginx port 80
-#remove the old configuration
-# Create a synbolic link to the default configuration
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-# restart the nginx server
-service nginx restart
+service nginx start
+kill "$(pgrep 'nginx' | head -1)"
