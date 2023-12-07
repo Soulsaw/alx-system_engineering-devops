@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Open the nginx port 80
 #remove the old configuration
-rm /etc/nginx/sites-enabled/default
 # Create a synbolic link to the default configuration
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 # restart the nginx server
