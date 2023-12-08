@@ -1,32 +1,38 @@
 global
-        user haproxy
-        group haproxy
-        daemon
+    log     /dev/log local0
+    maxconn 2048
+    user    haproxy
+    group   haproxy
+    tune.ssl.default-dh-param 2048
+
 
 defaults
-        log     global
-        mode    http
-        option  httplog
-        option  dontlognull
-        timeout connect 5000
-        timeout client  30000
-        timeout server  30000
-        errorfile 400 /etc/haproxy/errors/400.http
-        errorfile 403 /etc/haproxy/errors/403.http
-        errorfile 408 /etc/haproxy/errors/408.http
-        errorfile 500 /etc/haproxy/errors/500.http
-        errorfile 502 /etc/haproxy/errors/502.http
-        errorfile 503 /etc/haproxy/errors/503.http
-        errorfile 504 /etc/haproxy/errors/504.http
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option  redispatch
+    timeout connect 5000
+    timeout client  10000
+    timeout server  10000
+    option  forwardfor
+    option  http-server-close
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
 
 frontend www-https
-        bind :443 ssl crt /etc/letsencrypt/archive/www.souleytech226.tech/fullchain1.pem
-        default_backend servers
+    bind :443 ssl crt /etc/letsencrypt/live/www.souleytech226.tech/fullchain.pem
+    http-request add-header X-Forwarder-Proto https
+    default_backend www-backend
 
-backend servers
-        timeout connect 3000
-        timeout server 30000
-        balance roundrobin
-        redirect scheme https if !{ ssl_fc }
-        server 392400-web-01 52.91.148.142:80 check
-        server 392400-web-02 54.87.240.58:80 check
+backend www-backend
+    balance roundrobin
+    redirect scheme https if !{ ssl_fc }
+    server 392400-web-01 52.91.148.142:80 check
+    server 392400-web-02 54.87.240.58:80 check
