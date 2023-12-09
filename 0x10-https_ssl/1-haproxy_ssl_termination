@@ -11,15 +11,16 @@ global
     group haproxy
     daemon
 
-# Default SSL material locations
-ca-base /etc/ssl/certs
-crt-base /etc/ssl/private
+    # Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
 
-# Default ciphers to use on SSL-enabled listening sockets
-ssl-default-bind-ciphers kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL
+	# Default ciphers to use on SSL-enabled listening sockets
+	ssl-default-bind-ciphers kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL
 
-# Default options for SSL sessions
-ssl-default-bind-options no-sslv3
+	# Default options for SSL sessions
+	ssl-default-bind-options no-sslv3
+	ssl-dh-param-file /etc/haproxy/dhparams.pem
 
 # Default frontend configuration
 defaults
@@ -40,15 +41,13 @@ defaults
 
 # Frontend for SSL termination
 frontend www_frontend
-    bind *:443 #ssl crt /etc/letsencrypt/live/www.souleytech226.tech/fullchain.pem
-    http-request add-header X-Forwarded-Proto https
-    mode http
+    bind 0.0.0.0:80
+    bind *:443 ssl crt /etc/haproxy/certs/www.souleytech226.tech.pem
+    redirect scheme https code 301 if !{ ssl_fc }
     default_backend www_backend
 
 # Backend for your web server
 backend www_backend
-    mode http
     balance roundrobin
-    redirect scheme https if !{ ssl_fc }
     server 392400-web-01 52.91.148.142:80 check
     server 392400-web-02 54.87.240.58:80 check
