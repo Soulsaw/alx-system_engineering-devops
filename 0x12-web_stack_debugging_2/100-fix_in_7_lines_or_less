@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# reduce command
 if [ "$#" -ne 1 ]
 then
 	exit 1
