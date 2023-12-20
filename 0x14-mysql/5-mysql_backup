@@ -7,5 +7,5 @@ then
 fi
 # Create the backup of all databases on the root user
 backup="backup.sql"
-sudo mysqldump -u root -p "$1" --all-databases > "$backup"
+sudo mysqldump -u root -p "$1" --databases tyrell_corp > "$backup"
 tar -cvzf $(date +'%d-%m-%Y').tar.gz "$backup"
