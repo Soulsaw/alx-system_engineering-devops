@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This bash script make a buckup of the mysql database
+# Check if the numbers of aruments are not equal to 1
+if [ "$#" -ne 1 ]
+then
+	exit 1
+fi
+# Create the backup of all databases on the root user
+backup="backup.sql"
+sudo mysqldump -u root -p "$1" --all-databases > "$backup"
+tar -cvzf $(date +'%d-%m-%Y').tar.gz "$backup"

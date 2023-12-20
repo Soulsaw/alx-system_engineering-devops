@@ -36,6 +36,7 @@ log_bin_index	= /var/log/mysql/mysql-bin.log.index
 relay_log	= /var/log/mysql/mysql-relay-bin
 relay_log_index	= /var/log/mysql/mysql-relay-bin.index
 
+binlog_do_db    = tyrell_corp
 #bind-address	= 127.0.0.1
 server-id	= 2
 # By default we only accept connections from localhost
