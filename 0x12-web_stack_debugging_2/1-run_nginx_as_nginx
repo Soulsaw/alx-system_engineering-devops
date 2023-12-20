@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
 # Update the package index
-apt-get update
+sudo apt-get update
 
-# Install the sudo package if not already installed
-apt-get install -y sudo
 
 # Create an nginx user if it doesn't exist
 if ! id -u nginx &>/dev/null; then
@@ -12,10 +10,10 @@ if ! id -u nginx &>/dev/null; then
 fi
 
 # Install Nginx
-apt-get install -y nginx
+sudo apt-get install -y nginx
 
 # Backup the default Nginx configuration file
-mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 # Create a new Nginx configuration file
 cat <<EOF > /etc/nginx/nginx.conf
@@ -65,5 +63,4 @@ http {
 EOF
 
 # Restart Nginx to apply the changes
-systemctl restart nginx
-
+sudo systemctl restart nginx
