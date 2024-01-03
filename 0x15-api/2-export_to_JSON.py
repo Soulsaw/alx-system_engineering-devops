@@ -13,8 +13,8 @@ if __name__ == "__main__":
     new_dict = {}
     new_dict[user.get('id')] = [{"task": todo.get('title'),
                                  "completed": todo.get('completed'),
-                                 "username":
-                                 user.get('username')} for todo in todos]
+                                 "username": user.get('username')
+                                 } for todo in todos]
     with open(f"{user_id}.json", "w") as jsonfile:
         json.dump(new_dict, jsonfile)
         jsonfile.close()
