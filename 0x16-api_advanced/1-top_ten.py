@@ -13,6 +13,9 @@ def top_ten(subreddit):
             for comment in data['data']['children'][:10]:
                 print(comment['data']['title'])
             return
+        else:
+            print(None)
+            return
     except Exception as e:
         pass
     print(None)
