@@ -15,8 +15,7 @@ def recurse(subreddit, hot_list=[]):
             for comment in data['data']['children']:
                 hot_list.append(comment['data']['title'])
             if data['data']['after'] is not None:
-                recurse(subreddit, hot_list=hot_list,
-                        after=data['data']['after'])
+                recurse(subreddit, hot_list=hot_list)
             else:
                 return hot_list
         else:
